@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>E-COMMERCE</title>
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+    />
+    <style>
+      body {
+        padding-top: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <% if(typeof user !== "undefined") { %> <%- include("./navbar.ejs") %>
+    <h2 class="text-center my-5">You're signed in as <%= user.email %></h2>
+    <% } else { %> <%- include("./navbar.ejs") %> <% } %>
+    <div class="container">
+      <div class="text-center">
+        <% if(typeof items !== "undefined") { items.forEach(item => { %>
+        <div class="card d-inline-block" style="width: 18rem">
+          <img
+            class="card-img-top"
+            src="<%= item.image %>"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= item.title %></h5>
+            <p class="card-text"><%= item.description %></p>
+            <p class="card-text">Price: <%= item.price %>TL</p>
+            <p class="card-text">
+              Available amount: <%= item.availableCount %>
+            </p>
+            <% if(typeof admin!== "undefined"){ %>
+            <a href="/admin/delete/<%= item.id %>" class="btn btn-success mr-3"
+              >Delete</a
+            >
+            <a href="/admin/update/<%= item.id %>" class="btn btn-success mr-3"
+              >Update</a
+            >
+            <% } else{ %>
+            <a href="/customer/cart/<%= item.id %>" class="btn btn-success"
+              >Add to cart</a
+            >
+            <% } %>
+          </div>
+        </div>
+        <% }) } else if(typeof searchedItem !== "undefined") { %>
+        <div class="card d-inline-block" style="width: 18rem">
+          <img
+            class="card-img-top"
+            src="<%= searchedItem.image %>"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title"><%= searchedItem.title %></h5>
+            <p class="card-text"><%= searchedItem.description %></p>
+            <a href="#" class="btn btn-success">Add to cart</a>
+          </div>
+        </div>
+        <% } else if(typeof error !== "undefined") { %>
+        <h2 class="alert alert-danger text-large" role="alert"><%= error %></h2>
+        <% } else { %>
+        <h1><span class="fa fa-lock"></span> E-COMMERCE</h1>
+        <% } %>
+      </div>
+    </div>
+    <%- include("./footer.ejs") %>
+  </body>
+</html>

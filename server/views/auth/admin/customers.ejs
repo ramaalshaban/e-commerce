@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>E-COMMERCE</title>
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+    />
+    <style>
+      body {
+        padding-top: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include("../../navbar.ejs") %>
+    <h2 class="text-center">Customers List</h2>
+    <% if( customers.length !== 0) { customers.forEach(customer => { %>
+    <div class="card d-inline-block" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title"><%= customer.firstname %></h5>
+        <p class="card-text"><%= customer.email %></p>
+      </div>
+    </div>
+    <% }) } else{ %>
+    <h5 class="text-center">No Customers found</h5>
+    <% } %> <%- include("../../footer.ejs") %>
+  </body>
+</html>

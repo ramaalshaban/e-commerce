@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SIGN IN</title>
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+    />
+    <style>
+      body {
+        padding-top: 80px;
+      }
+      .form-control:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+      }
+    </style>
+  </head>
+  <body>
+    <%- include("./navbar.ejs") %>
+    <div class="text-center my-5">
+      <h1>
+        <a class="text-success text-decoration-none" href="/admin/signin"
+          >Login as admin</a
+        >
+      </h1>
+      <h1>
+        <a class="text-success text-decoration-none" href="/customer/signin"
+          >Login as customer</a
+        >
+      </h1>
+    </div>
+    <%- include("./footer.ejs") %>
+  </body>
+</html>

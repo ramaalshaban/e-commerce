@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>E-COMMERCE</title>
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+    />
+    <style>
+      body {
+        padding-top: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include("../../navbar.ejs") %>
+    <h2 class="text-center">Cart Items</h2>
+    <% if( items.length !== 0) { items.forEach(item => { %>
+    <div class="card d-inline-block mr-auto" style="width: 18rem">
+      <img class="card-img-top" src="<%= item.image %>" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title"><%= item.title %></h5>
+        <p class="card-text"><%= item.description %></p>
+        <p class="card-text">Quantity: <%= item.quantity %></p>
+      </div>
+    </div>
+    <% }) %>
+    <button class="btn btn-success d-block m-4">
+      <a class="text-light text-decoration-none" href="/customer/checkout"
+        >Order</a
+      >
+    </button>
+    <% } else{ %>
+    <h5 class="text-center">
+      No items in your cart. browser
+      <a href="/customer/shop-items">products</a> to add new ones :)
+    </h5>
+    <% } %> <%- include("../../footer.ejs") %>
+  </body>
+</html>
